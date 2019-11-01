@@ -72,12 +72,70 @@ namespace Vorbereitung_für_Klausur_2
                     {
                         s += Convert.ToInt32 (Convert.ToString(a[i]));
                     }
-                    Console.WriteLine(s);
+                    Console.WriteLine("Die Quersumme von " + a + " beträgt " + s);
                 }
 
 
                 else if(auswahl == 4)
                 {
+                    Console.WriteLine("Das Passwort soll mindestens acht Zeichen lang sein und nur aus Zahlen, kleinen und großen Buchstaben bestehen");
+                    PW:
+                    Console.WriteLine("Passwort eingeben");
+                    string p = Convert.ToString (Console.ReadLine());
+           
+                    
+                        //Char.IsDigit(p[i]);
+                        //Char.IsLetter(p[i]);
+                        //Char.IsUpper(p[i]);
+                        //Char.IsLower(p[i]);
+                        if (p.Length < 8)
+                        {
+                            Console.WriteLine("Passwort zu kurz");
+                        }
+                        if (!ContainsLowerCase(p))
+                        {
+                            Console.WriteLine("Passwort enthält keine Kleinbuchstaben");
+                        }
+                        if (!ContainsUpperCase(p))
+                        {
+                            Console.WriteLine("Passwort enthält keine Großbuchstaben");
+                        }
+                        if (!ContainsDigitCase(p))
+                        {
+                            Console.WriteLine("Passwort enthält keine Zahlen");
+                        }
+                        if (!ContainsLetterCase(p))
+                        {
+                            Console.WriteLine("Passwort enthält keine Letter");
+                        }  
+                        goto PW;
+
+
+
+                        /* else if(!ContainsLowerCase(p))
+                         {
+                             Console.WriteLine("Passwort enthält keine Kleinbuchstaben");
+                             goto PW;
+                         }
+                         else if (!ContainsUpperCase(p))
+                         {
+                             Console.WriteLine("Passwort enthält keine Großbuchstaben");
+                             goto PW;
+                         }
+                         else if (!ContainsDigitCase(p))
+                         {
+                             Console.WriteLine("Passwort enthält keine Zahlen");
+                             goto PW;
+                         }
+                         else if (!ContainsLetterCase(p))
+                         {
+                             Console.WriteLine("Passwort enthält keine Letter");
+                             goto PW;
+                         } */
+
+                    
+           
+                   
 
                 }
                 
@@ -95,7 +153,47 @@ namespace Vorbereitung_für_Klausur_2
                 wiederholung = Console.ReadLine();
             } while (wiederholung == "j");
         }
-        
+
+        static bool ContainsLowerCase(string p)
+        {
+            bool bed = false;
+            for(int i = 0; i < p.Length; i++)
+            {
+                if (Char.IsLower(p[i])) bed = true;
+            }
+            return bed;
+        }
+
+        static bool ContainsUpperCase(string p)
+        {
+            bool bed = false;
+            for (int i = 0; i < p.Length; i++)
+            {
+                if (Char.IsUpper(p[i])) bed = true;
+            }
+            return bed;
+        }
+
+        static bool ContainsDigitCase(string p)
+        {
+            bool bed = false;
+            for (int i = 0; i < p.Length; i++)
+            {
+                if (Char.IsDigit(p[i])) bed = true;
+            }
+            return bed;
+        }
+
+        static bool ContainsLetterCase(string p)
+        {
+            bool bed = false;
+            for (int i = 0; i < p.Length; i++)
+            {
+                if (Char.IsLetter(p[i])) bed = true;
+            }
+            return bed;
+        }
+
 
     }
 }
